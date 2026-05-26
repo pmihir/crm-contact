@@ -42,6 +42,8 @@ export type ContactData = {
 
 export type ContactFieldValue = string | string[] | undefined;
 
+export type EditableContactData = ContactData;
+
 export type ContactFieldViewModel = ContactField & {
   value: ContactFieldValue;
   isEmpty: boolean;
@@ -67,12 +69,21 @@ export type ContactOverviewCardProps = {
 
 export type FieldFolderProps = {
   folder: ContactFolderViewModel;
+  onFieldSave: (key: string, value: ContactFieldValue) => void;
 };
 
 export type FieldDisplayProps = {
   value: Exclude<ContactFieldValue, undefined>;
 };
 
+export type FieldValueProps = Pick<ContactFieldViewModel, "type" | "value" | "isEmpty">;
+
 export type ContactFieldItemProps = {
   field: ContactFieldViewModel;
+  onSave: (key: string, value: ContactFieldValue) => void;
+};
+
+export type FieldValidationResult = {
+  isValid: boolean;
+  message?: string;
 };

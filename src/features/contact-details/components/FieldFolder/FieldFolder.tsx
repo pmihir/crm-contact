@@ -4,7 +4,7 @@ import type { FieldFolderProps } from "../../types";
 import ContactFieldItem from "../ContactFieldItem/ContactFieldItem";
 import styles from "./FieldFolder.module.css";
 
-export default function FieldFolder({ folder }: FieldFolderProps) {
+export default function FieldFolder({ folder, onFieldSave }: FieldFolderProps) {
   const [isOpen, setIsOpen] = useState(folder.defaultOpen);
 
   return (
@@ -20,7 +20,7 @@ export default function FieldFolder({ folder }: FieldFolderProps) {
       {isOpen ? (
         <div className={styles.body}>
           {folder.fields.map((field) => (
-            <ContactFieldItem field={field} key={field.key} />
+            <ContactFieldItem field={field} key={field.key} onSave={onFieldSave} />
           ))}
         </div>
       ) : null}

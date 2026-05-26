@@ -69,6 +69,7 @@ src/
           FieldFolder.module.css
       helpers/
         buildContactDetailFolders.ts
+        fieldValidation.ts
       index.ts
       types.ts
     conversations/
@@ -139,6 +140,8 @@ The app has two small allow-listed renderer maps:
 
 Field labels and folder names are not hardcoded in the contact detail components. `ContactOverviewCard` owns the profile summary card, `ContactDetailsPanel` keeps the local tabs/search/folder composition, `FieldFolder` only renders accordion structure, and `ContactFieldItem` owns the label/value display for each prepared field. Section order is also not hardcoded in JSX.
 
+Contact fields can be edited inline. `fieldValidation.ts` keeps field-type parsing and validation close to the contact-details feature, with validation for email, phone, URL, date, and multi-select values.
+
 Feature-level helpers are used when they describe feature data flow, such as `buildContactDetailFolders.ts` joining contact field config with contact values. Small one-line UI conditions stay inside components to keep the code easy to follow.
 
 `ContactPage.tsx` owns the page-level loading and error state directly. Since this data load is only used by one page, keeping it in the page avoids an unnecessary hook abstraction.
@@ -161,12 +164,11 @@ This is intentionally small and readable, but it mirrors a real API boundary. La
 ## Known Limitations
 
 - No real API or persistence.
-- No full form editing flow.
+- Field edits are local-only and reset on page refresh.
 - Search and tabs are not wired to behavior.
 
 ## Possible Improvements
 
-- Add editable fields with validation by field type.
 - Add search/filter behavior for folders and fields.
 - Add component tests around the layout and field renderers.
 - Add storybook-style examples for field type rendering.

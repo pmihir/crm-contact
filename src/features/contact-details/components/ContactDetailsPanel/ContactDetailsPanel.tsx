@@ -1,15 +1,28 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { LuArrowLeft, LuChevronLeft, LuChevronRight, LuListFilter, LuSearch } from "react-icons/lu";
 import { Button } from "../../../../shared/ui";
 import { classNames } from "../../../../shared/lib/classNames";
-import type { ContactDetailsPanelProps } from "../../types";
+import type { ContactDetailsPanelProps, ContactFieldValue, EditableContactData } from "../../types";
 import { buildContactDetailFolders } from "../../helpers/buildContactDetailFolders";
 import ContactOverviewCard from "../ContactOverviewCard/ContactOverviewCard";
 import FieldFolder from "../FieldFolder/FieldFolder";
 import styles from "./ContactDetailsPanel.module.css";
 
 export default function ContactDetailsPanel({ title, contact, fieldsConfig }: ContactDetailsPanelProps) {
-  const folders = useMemo(() => buildContactDetailFolders(fieldsConfig, contact), [fieldsConfig, contact]);
+  const [editableContact, setEditableContact] = useState<EditableContactData>(contact);
+
+  useEffect(() => {
+    setEditableContact(contact);
+  }, [contact]);
+
+  const folders = useMemo(() => buildContactDetailFolders(fieldsConfig, editableContact), [fieldsConfig, editableContact]);
+
+  function handleFieldSave(key: string, value: ContactFieldValue) {
+    setEditableContact((currentContact) => ({
+      ...currentContact,
+      [key]: value,
+    }));
+  }
 
   return (
     <aside className={styles.contactPanel}>
@@ -27,7 +40,7 @@ export default function ContactDetailsPanel({ title, contact, fieldsConfig }: Co
         </Button>
       </header>
 
-      <ContactOverviewCard contact={contact} />
+      <ContactOverviewCard contact={editableContact} />
 
       <div className={styles.tabStrip} role="tablist" aria-label="Contact detail views">
         <button className={classNames(styles.tab, styles.activeTab)} type="button">
@@ -51,7 +64,7 @@ export default function ContactDetailsPanel({ title, contact, fieldsConfig }: Co
 
       <div className={styles.folderStack}>
         {folders.map((folder) => (
-          <FieldFolder key={folder.id} folder={folder} />
+          <FieldFolder key={folder.id} folder={folder} onFieldSave={handleFieldSave} />
         ))}
       </div>
     </aside>

@@ -20,6 +20,11 @@ export type LayoutConfig = {
 
 export type LayoutVariant = "default" | "notesFirst";
 
+export type LayoutOption = {
+  label: string;
+  value: LayoutVariant;
+};
+
 export type ContactPageData = {
   layout: LayoutConfig;
   contactFields: ContactFieldsConfig;

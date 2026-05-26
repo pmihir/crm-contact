@@ -2,10 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import { contactPageService } from "../../../../services/contactPageService";
 import { classNames } from "../../../../shared/lib/classNames";
 import { getContactPageSectionDefinition, sideRailItems } from "../../helpers/contactPageHelpers";
-import type { ContactPageData, LayoutVariant } from "../../types";
+import type { ContactPageData, LayoutOption, LayoutVariant } from "../../types";
 import styles from "./ContactPage.module.css";
 
-const layoutOptions: Array<{ label: string; value: LayoutVariant }> = [
+const layoutOptions: LayoutOption[] = [
   { label: "Default", value: "default" },
   { label: "Notes first", value: "notesFirst" },
 ];
