@@ -14,6 +14,10 @@ The goal is to show a practical config-driven frontend: page sections come from 
 - Static JSON files
 - No backend
 
+## Demo
+
+https://github.com/user-attachments/assets/90ec49ae-7605-465c-af26-98f33440f4e5
+
 ## Run Locally
 
 ```bash
