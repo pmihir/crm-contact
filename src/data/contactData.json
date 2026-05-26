@@ -1,0 +1,21 @@
+{
+  "id": "contact-olivia-john",
+  "firstName": "Olivia",
+  "lastName": "John",
+  "avatarUrl": "",
+  "owner": "Devon Lane",
+  "followers": ["Jenny Wilson", "Marvin McKinney"],
+  "tags": ["Shared Contact", "VIP", "+15"],
+  "phone": "+1 (555) 123-4567",
+  "email": "olivia.perry@example.com",
+  "address": "123 Maple Street, Springfield.\nIL 62704. USA.",
+  "businessName": "ABC Corp",
+  "streetAddress": "123 Main Street",
+  "city": "Springfield",
+  "country": "United States",
+  "website": "https://abc-corp.example.com",
+  "interestedModels": ["Honda Accord", "Toyota Camry", "Mazda CX-5"],
+  "budgetRange": "$18k - $24k",
+  "preferredContact": "Phone",
+  "nextFollowUp": "2026-05-29"
+}

@@ -1,0 +1,81 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.list {
+  display: grid;
+  gap: 14px;
+}
+
+.typingRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #657186;
+  padding: 14px 0 12px;
+  margin-top: auto;
+}
+
+.typingDots {
+  color: #8490a3;
+  letter-spacing: 3px;
+}
+
+.messageBox {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  border: 1px solid #ccd5e1;
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 46px;
+}
+
+.messageBox button {
+  height: 100%;
+  min-width: 46px;
+  border: 0;
+  border-right: 1px solid #d8dee8;
+  background: #ffffff;
+  color: #155eef;
+}
+
+.messageBox button:last-child {
+  border-right: 0;
+  background: #9ec5ff;
+  color: #ffffff;
+  margin: 8px;
+  min-width: 34px;
+  height: 34px;
+  border-radius: 5px;
+}
+
+.messageBox input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 0 14px;
+  color: #273247;
+}
+
+.messageBox input::placeholder {
+  color: #8a94a6;
+}
+
+@media (max-width: 760px) {
+  .messageBox {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .messageBox button:nth-of-type(2) {
+    display: none;
+  }
+}

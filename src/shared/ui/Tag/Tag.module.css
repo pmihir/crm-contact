@@ -1,0 +1,24 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 23px;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.blue {
+  color: #1261a6;
+  background: #e7f2ff;
+}
+
+.green {
+  color: #176b4d;
+  background: #e4f8ef;
+}
+
+.gray {
+  color: #445065;
+  background: #eef2f7;
+}

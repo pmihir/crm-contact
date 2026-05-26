@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "id": "contact",
+      "name": "Contact",
+      "defaultOpen": true,
+      "allowAdd": true,
+      "fields": [
+        { "key": "firstName", "label": "First Name", "type": "string" },
+        { "key": "lastName", "label": "Last Name", "type": "string" },
+        { "key": "phone", "label": "Phone Number", "type": "phone" },
+        { "key": "email", "label": "Email", "type": "email" },
+        { "key": "address", "label": "Address", "type": "textarea" }
+      ]
+    },
+    {
+      "id": "additional-info",
+      "name": "Additional Info",
+      "defaultOpen": true,
+      "fields": [
+        { "key": "businessName", "label": "Business Name", "type": "string" },
+        { "key": "streetAddress", "label": "Street Address", "type": "string" },
+        { "key": "city", "label": "City", "type": "string" },
+        { "key": "country", "label": "Country", "type": "string" },
+        { "key": "website", "label": "Website", "type": "url" }
+      ]
+    },
+    {
+      "id": "used-car-preferences",
+      "name": "Used Car Buyer Preferences",
+      "defaultOpen": false,
+      "fields": [
+        { "key": "interestedModels", "label": "Interested Models", "type": "multi-select" },
+        { "key": "budgetRange", "label": "Budget Range", "type": "tag" },
+        { "key": "preferredContact", "label": "Preferred Contact", "type": "radio" },
+        { "key": "nextFollowUp", "label": "Next Follow Up", "type": "date" }
+      ]
+    }
+  ]
+}

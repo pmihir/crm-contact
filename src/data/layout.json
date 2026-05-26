@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "id": "contact-details",
+      "type": "contactDetails",
+      "title": "Contact Details",
+      "order": 1
+    },
+    {
+      "id": "conversations",
+      "type": "conversations",
+      "title": "Conversations",
+      "order": 2
+    },
+    {
+      "id": "notes",
+      "type": "notes",
+      "title": "Notes",
+      "order": 3
+    }
+  ]
+}

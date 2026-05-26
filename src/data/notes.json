@@ -1,0 +1,26 @@
+[
+  {
+    "id": "note-1",
+    "content": "@Aaron Site inspection completed. Heavy moss buildup on north side, moderate algae staining. Customer very satisfied with quote presentation. Chose Premium package. Payment processed via credit card. Mentioned neighbor also needs service.",
+    "createdAt": "2026-05-25T14:10:00+05:30",
+    "author": "Aaron Site",
+    "type": "site-update",
+    "priority": "high"
+  },
+  {
+    "id": "note-2",
+    "content": "Customer mentioned that his pet has anxiety issues during grooming. Requested a specific time slot with less crowd. Make sure to allocate a calm handler for the session.",
+    "createdAt": "2026-05-25T13:40:00+05:30",
+    "author": "Mia Chen",
+    "type": "customer-context",
+    "priority": "normal"
+  },
+  {
+    "id": "note-3",
+    "content": "Discussed package upgrade options. Customer is considering the premium monthly grooming plan. Follow up in one week to check on their decision and offer any needed clarification, unless there is a change in course.",
+    "createdAt": "2026-05-25T12:35:00+05:30",
+    "author": "Devon Lane",
+    "type": "follow-up",
+    "priority": "normal"
+  }
+]

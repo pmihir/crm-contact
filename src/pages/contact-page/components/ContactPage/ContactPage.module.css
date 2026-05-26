@@ -1,0 +1,170 @@
+.appShell {
+  min-height: 100vh;
+  padding: 20px 50px 20px 20px;
+  background: #f2f4f7;
+  position: relative;
+}
+
+.appShellCentered {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.stateCard {
+  width: min(420px, 100%);
+  border: 1px solid #dde3eb;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(24, 36, 57, 0.06);
+  padding: 26px;
+  text-align: center;
+}
+
+.stateCard h1 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.stateCard p {
+  margin: 0;
+  color: #647084;
+}
+
+.loadingDot {
+  width: 22px;
+  height: 22px;
+  margin: 0 auto 14px;
+  border: 3px solid #dbe5f2;
+  border-top-color: #2563eb;
+  border-radius: 999px;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.crmLayout {
+  display: grid;
+  grid-template-columns: 370px minmax(480px, 1fr) 370px;
+  gap: 16px;
+  align-items: start;
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+.layoutToolbar {
+  max-width: 1760px;
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  color: #647084;
+  font-size: 13px;
+}
+
+.layoutSwitch {
+  display: inline-flex;
+  border: 1px solid #cfd7e3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.layoutSwitch button {
+  height: 30px;
+  border: 0;
+  border-right: 1px solid #d8dee8;
+  background: #ffffff;
+  color: #526075;
+  padding: 0 11px;
+  font-size: 13px;
+}
+
+.layoutSwitch button:last-child {
+  border-right: 0;
+}
+
+.layoutSwitchActive {
+  background: #e8ebef !important;
+  color: #1f2937 !important;
+  font-weight: 700;
+}
+
+.layoutColumn {
+  min-width: 0;
+}
+
+.sideRail {
+  position: fixed;
+  top: 22px;
+  right: 8px;
+  width: 34px;
+  display: grid;
+  gap: 16px;
+}
+
+.sideRail button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #667085;
+  font-size: 16px;
+}
+
+.sideRail button:hover,
+.sideRailActive {
+  background: #ffffff;
+  color: #155eef;
+  box-shadow: 0 2px 8px rgba(24, 36, 57, 0.1);
+}
+
+@media (max-width: 1180px) {
+  .appShell {
+    padding-right: 22px;
+  }
+
+  .crmLayout {
+    grid-template-columns: 360px minmax(0, 1fr);
+  }
+
+  .layoutColumnNotes {
+    grid-column: 1 / -1;
+  }
+
+  .sideRail {
+    display: none;
+  }
+}
+
+@media (min-width: 1500px) {
+  .crmLayout {
+    grid-template-columns: 410px minmax(560px, 1fr) 410px;
+  }
+
+  .layoutToolbar {
+    max-width: 1760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .appShell {
+    padding: 12px;
+  }
+
+  .crmLayout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .layoutToolbar {
+    justify-content: flex-start;
+  }
+}

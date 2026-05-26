@@ -1,0 +1,50 @@
+.fieldFolder {
+  border: 1px solid #e1e7ef;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.header {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-bottom: 1px solid #e6ebf2;
+  background: #ffffff;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #4d596c;
+}
+
+.addAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 14px;
+  padding: 16px;
+}
+
+@media (max-width: 760px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+}

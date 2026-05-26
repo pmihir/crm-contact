@@ -1,0 +1,45 @@
+.panel {
+  box-shadow: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.actions button {
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid #f2bd53;
+  border-radius: 5px;
+  background: #fff8e8;
+  padding: 16px 18px;
+  color: #253047;
+}
+
+.high {
+  border-color: #f0b43d;
+}
+
+.card p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.card p::first-letter {
+  color: #1b6cf0;
+}
+
+.card span {
+  color: #667085;
+  font-size: 13px;
+}

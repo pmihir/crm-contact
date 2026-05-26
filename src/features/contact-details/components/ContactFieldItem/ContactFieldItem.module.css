@@ -1,0 +1,63 @@
+.field {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  color: #596579;
+  font-size: 13px;
+}
+
+.field:nth-child(n + 3),
+.field:has([class*="multiline"]) {
+  grid-column: 1 / -1;
+}
+
+.value,
+.link {
+  display: inline-block;
+  margin-top: 4px;
+  color: #1d2638;
+  font-size: 15px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #155eef;
+  text-decoration: underline;
+}
+
+.multiline {
+  white-space: pre-line;
+}
+
+.empty {
+  color: #8a94a6;
+  font-style: italic;
+}
+
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 760px) {
+  .field:nth-child(n + 3),
+  .field:has([class*="multiline"]) {
+    grid-column: auto;
+  }
+}

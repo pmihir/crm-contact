@@ -1,0 +1,36 @@
+[
+  {
+    "id": "thread-1",
+    "channel": "email",
+    "title": "Set up a new time to follow up on the mail chain issue that we talked about the...",
+    "author": "Olivia John",
+    "recipient": "Me",
+    "createdAt": "2026-05-25T18:05:00+05:30",
+    "body": "Hey John,\n\nYour order has reached.\nYour Urban Wellness LLP order has arrived in your city. Click the button below to track your order in real-time. Arriving on Tuesday, November 19th.",
+    "actionLabel": "Track Your Order",
+    "status": "starred",
+    "replyCount": 3
+  },
+  {
+    "id": "whatsapp-1",
+    "channel": "whatsapp",
+    "title": "Olivia",
+    "author": "Olivia John",
+    "recipient": "Me",
+    "createdAt": "2026-05-25T17:44:00+05:30",
+    "body": "Please let me know\n11:44 AM",
+    "status": "incoming"
+  },
+  {
+    "id": "thread-2",
+    "channel": "email",
+    "title": "Set up a new time to follow up on the mail chain issue that we talked about the...",
+    "author": "Olivia John",
+    "recipient": "Me",
+    "createdAt": "2026-05-25T16:55:00+05:30",
+    "body": "Hey John,\n\nYour order has reached.\nYour Urban Wellness LLP order has arrived in your city. Click the button below to track your order in real-time. Arriving on Tuesday, November 19th.",
+    "actionLabel": "Track Your Order",
+    "status": "open",
+    "replyCount": 3
+  }
+]
