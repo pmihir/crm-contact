@@ -16,7 +16,7 @@ The goal is to show a practical config-driven frontend: page sections come from 
 
 ## Demo
 
-https://github.com/user-attachments/assets/90ec49ae-7605-465c-af26-98f33440f4e5
+https://github.com/user-attachments/assets/7bb1c01c-4939-4faa-970b-865452e7f897
 
 ## Run Locally
 
