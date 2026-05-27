@@ -1,5 +1,6 @@
 .appShell {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
   padding: 20px 50px 20px 20px;
   background: #f2f4f7;
   position: relative;
@@ -51,7 +52,8 @@
   display: grid;
   grid-template-columns: 370px minmax(480px, 1fr) 370px;
   gap: 16px;
-  align-items: start;
+  align-items: stretch;
+  height: calc(100vh - 80px);
   max-width: 1760px;
   margin: 0 auto;
 }
@@ -97,6 +99,15 @@
 
 .layoutColumn {
   min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+.layoutColumn > * {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
 }
 
 .sideRail {
@@ -127,11 +138,18 @@
 
 @media (max-width: 1180px) {
   .appShell {
+    height: auto;
+    overflow: visible;
     padding-right: 22px;
   }
 
   .crmLayout {
     grid-template-columns: 360px minmax(0, 1fr);
+    height: auto;
+  }
+
+  .layoutColumn > * {
+    height: auto;
   }
 
   .layoutColumnNotes {

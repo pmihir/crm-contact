@@ -1,6 +1,7 @@
 [
   {
     "id": "note-1",
+    "contactId": "contact-olivia-john",
     "content": "@Aaron Site inspection completed. Heavy moss buildup on north side, moderate algae staining. Customer very satisfied with quote presentation. Chose Premium package. Payment processed via credit card. Mentioned neighbor also needs service.",
     "createdAt": "2026-05-25T14:10:00+05:30",
     "author": "Aaron Site",
@@ -9,6 +10,7 @@
   },
   {
     "id": "note-2",
+    "contactId": "contact-olivia-john",
     "content": "Customer mentioned that his pet has anxiety issues during grooming. Requested a specific time slot with less crowd. Make sure to allocate a calm handler for the session.",
     "createdAt": "2026-05-25T13:40:00+05:30",
     "author": "Mia Chen",
@@ -17,9 +19,64 @@
   },
   {
     "id": "note-3",
+    "contactId": "contact-olivia-john",
     "content": "Discussed package upgrade options. Customer is considering the premium monthly grooming plan. Follow up in one week to check on their decision and offer any needed clarification, unless there is a change in course.",
     "createdAt": "2026-05-25T12:35:00+05:30",
     "author": "Devon Lane",
+    "type": "follow-up",
+    "priority": "normal"
+  },
+  {
+    "id": "note-4",
+    "contactId": "contact-aaron-brooks",
+    "content": "Aaron asked for a revised quote with premium protection included. He is comparing two options and wants a concise breakdown before Friday.",
+    "createdAt": "2026-05-26T09:15:00+05:30",
+    "author": "Jenny Wilson",
+    "type": "quote",
+    "priority": "high"
+  },
+  {
+    "id": "note-5",
+    "contactId": "contact-aaron-brooks",
+    "content": "Prefers afternoon calls. Mentioned he will be traveling next week and may respond slower than usual.",
+    "createdAt": "2026-05-25T16:20:00+05:30",
+    "author": "Devon Lane",
+    "type": "preference",
+    "priority": "normal"
+  },
+  {
+    "id": "note-6",
+    "contactId": "contact-mia-chen",
+    "content": "Mia is interested in financing options and wants a payment estimate before scheduling another visit.",
+    "createdAt": "2026-05-26T11:05:00+05:30",
+    "author": "Marvin McKinney",
+    "type": "financing",
+    "priority": "high"
+  },
+  {
+    "id": "note-7",
+    "contactId": "contact-mia-chen",
+    "content": "Previously purchased from us two years ago. Keep the tone warm and acknowledge her past experience.",
+    "createdAt": "2026-05-25T10:45:00+05:30",
+    "author": "Jenny Wilson",
+    "type": "relationship",
+    "priority": "normal"
+  },
+  {
+    "id": "note-8",
+    "contactId": "contact-devon-lane",
+    "content": "Devon asked about trade-in value and wants photos reviewed before committing to an appointment.",
+    "createdAt": "2026-05-26T15:25:00+05:30",
+    "author": "Olivia John",
+    "type": "trade-in",
+    "priority": "high"
+  },
+  {
+    "id": "note-9",
+    "contactId": "contact-devon-lane",
+    "content": "Send follow-up with two SUV recommendations and include service history highlights.",
+    "createdAt": "2026-05-25T18:00:00+05:30",
+    "author": "Aaron Brooks",
     "type": "follow-up",
     "priority": "normal"
   }

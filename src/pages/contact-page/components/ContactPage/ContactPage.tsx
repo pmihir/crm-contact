@@ -14,13 +14,14 @@ export default function ContactPage() {
   const [data, setData] = useState<ContactPageData | null>(null);
   const [error, setError] = useState("");
   const [layoutVariant, setLayoutVariant] = useState<LayoutVariant>("default");
+  const [contactIndex, setContactIndex] = useState(0);
 
   useEffect(() => {
     let ignore = false;
 
     setError("");
     contactPageService
-      .getContactPageData(layoutVariant)
+      .getContactPageData(layoutVariant, contactIndex)
       .then((pageData) => {
         if (!ignore) setData(pageData);
       })
@@ -31,13 +32,25 @@ export default function ContactPage() {
     return () => {
       ignore = true;
     };
-  }, [layoutVariant]);
+  }, [layoutVariant, contactIndex]);
 
   const isLoading = !data && !error;
 
   const orderedSections = useMemo(() => {
     return [...(data?.layout.sections ?? [])].sort((a, b) => a.order - b.order);
   }, [data]);
+
+  const navigationHandlers = useMemo(
+    () => ({
+      onPreviousContact: () => setContactIndex((currentIndex) => Math.max(currentIndex - 1, 0)),
+      onNextContact: () =>
+        setContactIndex((currentIndex) => {
+          const lastIndex = Math.max((data?.totalContacts ?? 1) - 1, 0);
+          return Math.min(currentIndex + 1, lastIndex);
+        }),
+    }),
+    [data?.totalContacts],
+  );
 
   if (error) {
     return (
@@ -83,7 +96,7 @@ export default function ContactPage() {
 
       <div className={styles.crmLayout}>
         {orderedSections.map((section) => {
-          const sectionDefinition = getContactPageSectionDefinition(section, data, styles);
+          const sectionDefinition = getContactPageSectionDefinition(section, data, styles, navigationHandlers);
 
           if (!sectionDefinition) {
             return null;

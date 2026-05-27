@@ -2,6 +2,7 @@ export type NotePriority = "high" | "normal" | "low";
 
 export type Note = {
   id: string;
+  contactId: string;
   content: string;
   createdAt: string;
   author: string;

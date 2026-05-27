@@ -2,6 +2,7 @@ export type ConversationChannel = "email" | "whatsapp" | "call" | "sms";
 
 export type ConversationItem = {
   id: string;
+  contactId: string;
   channel: ConversationChannel;
   title: string;
   author: string;

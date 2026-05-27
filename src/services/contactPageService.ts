@@ -11,7 +11,7 @@ import type { ContactPageData, ContactPageResourceMap, ContactPageService, Layou
 const resources: ContactPageResourceMap = {
   layout: layout as LayoutConfig,
   contactFields: contactFields as ContactFieldsConfig,
-  contact: contactData as ContactData,
+  contacts: contactData as ContactData[],
   notes: notes as Note[],
   conversations: conversations as ConversationItem[],
 };
@@ -53,21 +53,29 @@ function applyLayoutVariant(layoutConfig: LayoutConfig, layoutVariant: LayoutVar
   };
 }
 
-async function getContactPageData(layoutVariant: LayoutVariant = "default"): Promise<ContactPageData> {
-  const [layoutConfig, fieldsConfig, contact, notesList, conversationList] = await Promise.all([
+function getSafeContactIndex(contactIndex: number, totalContacts: number) {
+  return Math.min(Math.max(contactIndex, 0), Math.max(totalContacts - 1, 0));
+}
+
+async function getContactPageData(layoutVariant: LayoutVariant = "default", contactIndex = 0): Promise<ContactPageData> {
+  const [layoutConfig, fieldsConfig, contacts, notesList, conversationList] = await Promise.all([
     fetchResource("layout"),
     fetchResource("contactFields"),
-    fetchResource("contact"),
+    fetchResource("contacts"),
     fetchResource("notes"),
     fetchResource("conversations"),
   ]);
+  const safeContactIndex = getSafeContactIndex(contactIndex, contacts.length);
+  const contact = contacts[safeContactIndex];
 
   return {
     layout: applyLayoutVariant(layoutConfig, layoutVariant),
     contactFields: fieldsConfig,
     contact,
-    notes: notesList,
-    conversations: conversationList,
+    contactIndex: safeContactIndex,
+    totalContacts: contacts.length,
+    notes: notesList.filter((note) => note.contactId === contact.id),
+    conversations: conversationList.filter((conversation) => conversation.contactId === contact.id),
   };
 }
 

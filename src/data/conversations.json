@@ -1,6 +1,7 @@
 [
   {
     "id": "thread-1",
+    "contactId": "contact-olivia-john",
     "channel": "email",
     "title": "Set up a new time to follow up on the mail chain issue that we talked about the...",
     "author": "Olivia John",
@@ -13,6 +14,7 @@
   },
   {
     "id": "whatsapp-1",
+    "contactId": "contact-olivia-john",
     "channel": "whatsapp",
     "title": "Olivia",
     "author": "Olivia John",
@@ -23,6 +25,7 @@
   },
   {
     "id": "thread-2",
+    "contactId": "contact-olivia-john",
     "channel": "email",
     "title": "Set up a new time to follow up on the mail chain issue that we talked about the...",
     "author": "Olivia John",
@@ -32,5 +35,77 @@
     "actionLabel": "Track Your Order",
     "status": "open",
     "replyCount": 3
+  },
+  {
+    "id": "thread-3",
+    "contactId": "contact-aaron-brooks",
+    "channel": "email",
+    "title": "Revised quote with protection package details",
+    "author": "Aaron Brooks",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T10:30:00+05:30",
+    "body": "Hi,\n\nPlease send the updated quote with the premium protection option included. I want to compare total monthly cost before making a decision.",
+    "actionLabel": "Review Quote",
+    "status": "starred",
+    "replyCount": 2
+  },
+  {
+    "id": "whatsapp-2",
+    "contactId": "contact-aaron-brooks",
+    "channel": "whatsapp",
+    "title": "Aaron",
+    "author": "Aaron Brooks",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T09:55:00+05:30",
+    "body": "Can you call after 3 PM?\n09:55 AM",
+    "status": "incoming"
+  },
+  {
+    "id": "thread-4",
+    "contactId": "contact-mia-chen",
+    "channel": "email",
+    "title": "Financing estimate for the CX-5 option",
+    "author": "Mia Chen",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T12:20:00+05:30",
+    "body": "Hello,\n\nCould you send an estimated monthly payment for the Mazda CX-5 with a moderate down payment? I would like to review before visiting again.",
+    "actionLabel": "Send Estimate",
+    "status": "starred",
+    "replyCount": 1
+  },
+  {
+    "id": "whatsapp-3",
+    "contactId": "contact-mia-chen",
+    "channel": "whatsapp",
+    "title": "Mia",
+    "author": "Mia Chen",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T11:48:00+05:30",
+    "body": "The afternoon slot works best.\n11:48 AM",
+    "status": "incoming"
+  },
+  {
+    "id": "thread-5",
+    "contactId": "contact-devon-lane",
+    "channel": "email",
+    "title": "Trade-in photos and SUV recommendations",
+    "author": "Devon Lane",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T16:10:00+05:30",
+    "body": "Hi,\n\nI uploaded the trade-in photos. Please review them and send two SUV options that fit the budget range we discussed.",
+    "actionLabel": "View Photos",
+    "status": "open",
+    "replyCount": 4
+  },
+  {
+    "id": "whatsapp-4",
+    "contactId": "contact-devon-lane",
+    "channel": "whatsapp",
+    "title": "Devon",
+    "author": "Devon Lane",
+    "recipient": "Me",
+    "createdAt": "2026-05-26T15:40:00+05:30",
+    "body": "Sent the photos just now.\n03:40 PM",
+    "status": "incoming"
   }
 ]

@@ -129,11 +129,11 @@ Generic helpers live in `shared/lib` only when more than one feature uses them. 
 
 `contactFields.json` defines folders and fields for the left Contact Details panel. Folder names, open state, optional folder actions, field labels, field keys, and field types all come from this file.
 
-`contactData.json` contains values keyed by the field keys from `contactFields.json`. `buildContactDetailFolders.ts` joins field configuration with contact values into a simple folder view model before rendering.
+`contactData.json` contains multiple contact records with values keyed by the field keys from `contactFields.json`. `buildContactDetailFolders.ts` joins field configuration with the selected contact values into a simple folder view model before rendering.
 
-`notes.json` drives the yellow note cards in the right panel.
+`notes.json` drives the yellow note cards in the right panel and is filtered by the selected contact.
 
-`conversations.json` drives the activity/conversation stream in the center panel.
+`conversations.json` drives the activity/conversation stream in the center panel and is filtered by the selected contact.
 
 ## Dynamic Rendering Approach
 
@@ -150,6 +150,8 @@ Feature-level helpers are used when they describe feature data flow, such as `bu
 
 `ContactPage.tsx` owns the page-level loading and error state directly. Since this data load is only used by one page, keeping it in the page avoids an unnecessary hook abstraction.
 
+The previous/next contact controls update the selected contact index and request the matching contact page data from the service. The service reuses cached JSON resources and returns contact-specific notes and conversations.
+
 ## Data Service And Caching
 
 `src/services/contactPageService.ts` is shaped like a replaceable data service. Today it reads from `src/data/*.json`, adds a small async delay, and stores resolved resources in an in-memory `Map`, so repeated requests return from cache. The layout toggle only derives a different section order from the cached base layout; contact details, notes, and conversations continue to reuse the same cached data.
@@ -159,7 +161,7 @@ This is intentionally small and readable, but it mirrors a real API boundary. La
 ## Assumptions
 
 - The screenshot is treated as the visual direction, not a pixel-perfect design system.
-- Static data uses one contact record because the assignment focuses on a Contact Details page.
+- Static data uses a small set of contact records to demonstrate previous/next navigation.
 - The right rail icons and action buttons are visual-only.
 - Conversations and notes are read-only static data.
 - Search, DND, and Actions tabs are present for UI fidelity but do not filter content.

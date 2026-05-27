@@ -8,7 +8,15 @@ import ContactOverviewCard from "../ContactOverviewCard/ContactOverviewCard";
 import FieldFolder from "../FieldFolder/FieldFolder";
 import styles from "./ContactDetailsPanel.module.css";
 
-export default function ContactDetailsPanel({ title, contact, fieldsConfig }: ContactDetailsPanelProps) {
+export default function ContactDetailsPanel({
+  title,
+  contact,
+  fieldsConfig,
+  recordPosition,
+  totalRecords,
+  onPreviousContact,
+  onNextContact,
+}: ContactDetailsPanelProps) {
   const [editableContact, setEditableContact] = useState<EditableContactData>(contact);
 
   useEffect(() => {
@@ -31,11 +39,11 @@ export default function ContactDetailsPanel({ title, contact, fieldsConfig }: Co
           <LuArrowLeft size={17} />
         </Button>
         <h1>{title}</h1>
-        <span className={styles.recordCount}>1 of 356</span>
-        <Button aria-label="Previous contact">
+        <span className={styles.recordCount}>{recordPosition} of {totalRecords}</span>
+        <Button aria-label="Previous contact" disabled={recordPosition <= 1} onClick={onPreviousContact}>
           <LuChevronLeft size={17} />
         </Button>
-        <Button aria-label="Next contact">
+        <Button aria-label="Next contact" disabled={recordPosition >= totalRecords} onClick={onNextContact}>
           <LuChevronRight size={17} />
         </Button>
       </header>

@@ -14,6 +14,7 @@ import type {
   ContactPageData,
   ContactPageSectionDefinition,
   ContactPageStyles,
+  ContactNavigationHandlers,
   KnownLayoutSectionType,
   LayoutSection,
   SideRailItem,
@@ -31,6 +32,7 @@ export function getContactPageSectionDefinition(
   section: LayoutSection,
   data: ContactPageData,
   styles: ContactPageStyles,
+  navigationHandlers: ContactNavigationHandlers,
 ) {
   const sectionRegistry: Record<KnownLayoutSectionType, ContactPageSectionDefinition> = {
     contactDetails: {
@@ -40,6 +42,10 @@ export function getContactPageSectionDefinition(
           title: currentSection.title,
           contact: pageData.contact,
           fieldsConfig: pageData.contactFields,
+          recordPosition: pageData.contactIndex + 1,
+          totalRecords: pageData.totalContacts,
+          onPreviousContact: navigationHandlers.onPreviousContact,
+          onNextContact: navigationHandlers.onNextContact,
         }),
     },
     conversations: {

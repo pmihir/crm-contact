@@ -29,12 +29,14 @@ export type ContactPageData = {
   layout: LayoutConfig;
   contactFields: ContactFieldsConfig;
   contact: ContactData;
+  contactIndex: number;
+  totalContacts: number;
   notes: Note[];
   conversations: ConversationItem[];
 };
 
 export type ContactPageService = {
-  getContactPageData(layoutVariant?: LayoutVariant): Promise<ContactPageData>;
+  getContactPageData(layoutVariant?: LayoutVariant, contactIndex?: number): Promise<ContactPageData>;
   clearCache?(): void;
 };
 
@@ -43,6 +45,11 @@ export type ContactPageStyles = Record<string, string>;
 export type ContactPageSectionDefinition = {
   className: string;
   render: (section: LayoutSection, data: ContactPageData) => ReactElement;
+};
+
+export type ContactNavigationHandlers = {
+  onPreviousContact: () => void;
+  onNextContact: () => void;
 };
 
 export type SideRailItem = {
@@ -55,7 +62,7 @@ export type SideRailItem = {
 export type ContactPageResourceMap = {
   layout: LayoutConfig;
   contactFields: ContactFieldsConfig;
-  contact: ContactData;
+  contacts: ContactData[];
   notes: Note[];
   conversations: ConversationItem[];
 };

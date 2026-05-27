@@ -61,6 +61,10 @@ export type ContactDetailsPanelProps = {
   title: string;
   contact: ContactData;
   fieldsConfig: ContactFieldsConfig;
+  recordPosition: number;
+  totalRecords: number;
+  onPreviousContact: () => void;
+  onNextContact: () => void;
 };
 
 export type ContactOverviewCardProps = {
