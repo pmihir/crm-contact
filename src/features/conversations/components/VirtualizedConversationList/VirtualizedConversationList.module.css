@@ -1,0 +1,49 @@
+.scrollArea {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.virtualCanvas {
+  position: relative;
+  width: 100%;
+}
+
+.virtualRow {
+  left: 0;
+  padding-bottom: 14px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px dashed #cfd8e6;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #647084;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.loader::before {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border: 2px solid #d6dfeb;
+  border-top-color: #155eef;
+  border-radius: 999px;
+  content: "";
+  animation: spin 750ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

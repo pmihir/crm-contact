@@ -11,6 +11,7 @@ The goal is to show a practical config-driven frontend: page sections come from 
 - Vite
 - CSS Modules
 - React Icons
+- TanStack React Virtual
 - Static JSON files
 - No backend
 
@@ -84,6 +85,9 @@ src/
         ConversationsPanel/
           ConversationsPanel.tsx
           ConversationsPanel.module.css
+        VirtualizedConversationList/
+          VirtualizedConversationList.tsx
+          VirtualizedConversationList.module.css
       index.ts
       types.ts
     notes/
@@ -151,6 +155,8 @@ Feature-level helpers are used when they describe feature data flow, such as `bu
 `ContactPage.tsx` owns the page-level loading and error state directly. Since this data load is only used by one page, keeping it in the page avoids an unnecessary hook abstraction.
 
 The previous/next contact controls update the selected contact index and request the matching contact page data from the service. The service reuses cached JSON resources and returns contact-specific notes and conversations.
+
+The conversation feed uses `@tanstack/react-virtual` so the center panel can handle a long activity history without rendering every conversation card at once. The composer stays visible while only the conversation list scrolls. The demo also simulates paginated loading with a small inline loader when the user reaches the end of the currently rendered batch.
 
 ## Data Service And Caching
 

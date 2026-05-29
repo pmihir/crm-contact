@@ -23,3 +23,7 @@ export type ConversationsPanelProps = {
 export type ConversationCardProps = {
   item: ConversationItem;
 };
+
+export type VirtualizedConversationListProps = {
+  conversations: ConversationItem[];
+};

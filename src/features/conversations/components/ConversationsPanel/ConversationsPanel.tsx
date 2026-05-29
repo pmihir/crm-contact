@@ -8,7 +8,7 @@ import {
 } from "react-icons/lu";
 import { SectionCard } from "../../../../shared/ui";
 import type { ConversationsPanelProps } from "../../types";
-import ConversationCard from "../ConversationCard/ConversationCard";
+import VirtualizedConversationList from "../VirtualizedConversationList/VirtualizedConversationList";
 import styles from "./ConversationsPanel.module.css";
 
 export default function ConversationsPanel({ title, contactName, conversations }: ConversationsPanelProps) {
@@ -23,11 +23,7 @@ export default function ConversationsPanel({ title, contactName, conversations }
       }
       className={styles.panel}
     >
-      <div className={styles.list}>
-        {conversations.map((item) => (
-          <ConversationCard key={item.id} item={item} />
-        ))}
-      </div>
+      <VirtualizedConversationList conversations={conversations} />
       <div className={styles.typingRow}>
         <LuReply size={15} aria-hidden="true" />
         {contactName} is typing
