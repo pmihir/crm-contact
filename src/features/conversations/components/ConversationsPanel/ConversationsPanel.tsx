@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import {
   LuChevronDown,
   LuMail,
@@ -6,12 +7,70 @@ import {
   LuSend,
   LuSparkles,
 } from "react-icons/lu";
+import { getConversationPage } from "../../../../services/conversationService";
 import { SectionCard } from "../../../../shared/ui";
-import type { ConversationsPanelProps } from "../../types";
+import type { ConversationItem, ConversationsPanelProps } from "../../types";
 import VirtualizedConversationList from "../VirtualizedConversationList/VirtualizedConversationList";
 import styles from "./ConversationsPanel.module.css";
 
-export default function ConversationsPanel({ title, contactName, conversations }: ConversationsPanelProps) {
+const CONVERSATION_PAGE_SIZE = 10;
+
+export default function ConversationsPanel({ title, contactId, contactName }: ConversationsPanelProps) {
+  const [conversations, setConversations] = useState<ConversationItem[]>([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingInitial, setIsLoadingInitial] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let ignore = false;
+
+    setConversations([]);
+    setPage(1);
+    setHasMore(true);
+    setError("");
+    setIsLoadingInitial(true);
+
+    getConversationPage(contactId, 1, CONVERSATION_PAGE_SIZE)
+      .then((result) => {
+        if (ignore) return;
+        setConversations(result.items);
+        setPage(result.page);
+        setHasMore(result.hasMore);
+      })
+      .catch(() => {
+        if (!ignore) setError("Unable to load conversations.");
+      })
+      .finally(() => {
+        if (!ignore) setIsLoadingInitial(false);
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, [contactId]);
+
+  const handleLoadMore = useCallback(() => {
+    if (!hasMore || isLoadingInitial || isLoadingMore) return;
+
+    setIsLoadingMore(true);
+    setError("");
+
+    getConversationPage(contactId, page + 1, CONVERSATION_PAGE_SIZE)
+      .then((result) => {
+        setConversations((currentItems) => [...currentItems, ...result.items]);
+        setPage(result.page);
+        setHasMore(result.hasMore);
+      })
+      .catch(() => {
+        setError("Unable to load conversations.");
+      })
+      .finally(() => {
+        setIsLoadingMore(false);
+      });
+  }, [contactId, hasMore, isLoadingInitial, isLoadingMore, page]);
+
   return (
     <SectionCard
       title={
@@ -23,7 +82,16 @@ export default function ConversationsPanel({ title, contactName, conversations }
       }
       className={styles.panel}
     >
-      <VirtualizedConversationList conversations={conversations} />
+      {isLoadingInitial || error ? (
+        <div className={styles.feedState}>{error || "Loading conversations..."}</div>
+      ) : (
+        <VirtualizedConversationList
+          conversations={conversations}
+          hasMore={hasMore}
+          isLoadingMore={isLoadingMore}
+          onLoadMore={handleLoadMore}
+        />
+      )}
       <div className={styles.typingRow}>
         <LuReply size={15} aria-hidden="true" />
         {contactName} is typing

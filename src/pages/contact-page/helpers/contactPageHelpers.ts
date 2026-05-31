@@ -53,8 +53,8 @@ export function getContactPageSectionDefinition(
       render: (currentSection, pageData) =>
         createElement(ConversationsPanel, {
           title: currentSection.title,
+          contactId: pageData.contact.id,
           contactName: pageData.contact.firstName,
-          conversations: pageData.conversations,
         }),
     },
     notes: {

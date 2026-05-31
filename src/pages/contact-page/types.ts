@@ -1,7 +1,6 @@
 import type { ReactElement } from "react";
 import type { IconType } from "react-icons";
 import type { ContactData, ContactFieldsConfig } from "../../features/contact-details";
-import type { ConversationItem } from "../../features/conversations";
 import type { Note } from "../../features/notes";
 
 export type KnownLayoutSectionType = "contactDetails" | "conversations" | "notes";
@@ -32,7 +31,6 @@ export type ContactPageData = {
   contactIndex: number;
   totalContacts: number;
   notes: Note[];
-  conversations: ConversationItem[];
 };
 
 export type ContactPageService = {
@@ -64,5 +62,4 @@ export type ContactPageResourceMap = {
   contactFields: ContactFieldsConfig;
   contacts: ContactData[];
   notes: Note[];
-  conversations: ConversationItem[];
 };

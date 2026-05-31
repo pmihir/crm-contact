@@ -16,8 +16,8 @@ export type ConversationItem = {
 
 export type ConversationsPanelProps = {
   title: string;
+  contactId: string;
   contactName: string;
-  conversations: ConversationItem[];
 };
 
 export type ConversationCardProps = {
@@ -26,4 +26,13 @@ export type ConversationCardProps = {
 
 export type VirtualizedConversationListProps = {
   conversations: ConversationItem[];
+  hasMore: boolean;
+  isLoadingMore: boolean;
+  onLoadMore: () => void;
+};
+
+export type ConversationsPage = {
+  items: ConversationItem[];
+  hasMore: boolean;
+  page: number;
 };

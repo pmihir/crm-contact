@@ -1,8 +1,8 @@
 # CRM Contact Details
 
-A small React + TypeScript take-home assignment that renders a CRM-style contact details page from static JSON configuration.
+A small React + TypeScript take-home assignment that renders a CRM-style contact details page from JSON configuration.
 
-The goal is to show a practical config-driven frontend: page sections come from layout JSON, contact folders and fields come from field config JSON, and the displayed values come from separate static data files behind a service layer.
+The goal is to show a practical config-driven frontend: page sections come from layout JSON, contact folders and fields come from field config JSON, and the displayed values come from API-backed JSON resources behind a service layer.
 
 ## Tech Stack
 
@@ -10,9 +10,9 @@ The goal is to show a practical config-driven frontend: page sections come from 
 - TypeScript
 - Vite
 - CSS Modules
+- Axios
 - React Icons
 - TanStack React Virtual
-- Static JSON files
 - No backend
 
 ## Demo
@@ -129,7 +129,7 @@ Generic helpers live in `shared/lib` only when more than one feature uses them. 
 
 ## JSON Usage
 
-`layout.json` controls which major sections are visible and their default order. The runtime layout toggle reuses this same JSON and applies small order overrides in the data service, so section definitions are not duplicated. `ContactPage.tsx` sorts sections by `order`, then renders the matching section type.
+The layout config is fetched from a mock API endpoint in `contactPageService.ts`, with `layout.json` kept as a local fallback if the endpoint is unavailable. The layout controls which major sections are visible and their default order. The runtime layout toggle reuses this same layout shape and applies small order overrides in the data service, so section definitions are not duplicated. `ContactPage.tsx` sorts sections by `order`, then renders the matching section type.
 
 `contactFields.json` defines folders and fields for the left Contact Details panel. Folder names, open state, optional folder actions, field labels, field keys, and field types all come from this file.
 
@@ -137,7 +137,7 @@ Generic helpers live in `shared/lib` only when more than one feature uses them. 
 
 `notes.json` drives the yellow note cards in the right panel and is filtered by the selected contact.
 
-`conversations.json` drives the activity/conversation stream in the center panel and is filtered by the selected contact.
+The conversation stream is fetched from a MockAPI endpoint with `contactId`, `page`, and `limit` query params. `conversations.json` remains only as a local fallback if that endpoint fails.
 
 ## Dynamic Rendering Approach
 
@@ -154,22 +154,22 @@ Feature-level helpers are used when they describe feature data flow, such as `bu
 
 `ContactPage.tsx` owns the page-level loading and error state directly. Since this data load is only used by one page, keeping it in the page avoids an unnecessary hook abstraction.
 
-The previous/next contact controls update the selected contact index and request the matching contact page data from the service. The service reuses cached JSON resources and returns contact-specific notes and conversations.
+The previous/next contact controls update the selected contact index and request the matching contact page data from the service. The service reuses cached JSON resources and returns contact-specific notes. Conversations are loaded separately by the conversations feature because that list is paginated and can grow independently from the rest of the page.
 
-The conversation feed uses `@tanstack/react-virtual` so the center panel can handle a long activity history without rendering every conversation card at once. The composer stays visible while only the conversation list scrolls. The demo also simulates paginated loading with a small inline loader when the user reaches the end of the currently rendered batch.
+The conversation feed requests pages from MockAPI using `contactId`, `page`, and `limit`, then appends the next page when the virtualized list reaches the loading row. It uses `@tanstack/react-virtual` so the center panel can handle a long activity history without rendering every conversation card at once. The composer stays visible while only the conversation list scrolls.
 
 ## Data Service And Caching
 
-`src/services/contactPageService.ts` is shaped like a replaceable data service. Today it reads from `src/data/*.json`, adds a small async delay, and stores resolved resources in an in-memory `Map`, so repeated requests return from cache. The layout toggle only derives a different section order from the cached base layout; contact details, notes, and conversations continue to reuse the same cached data.
+`src/services/contactPageService.ts` is shaped like a replaceable data service. It fetches layout, contact fields, contact data, and notes from mock API endpoints. `src/services/conversationService.ts` fetches conversations separately with page-based API calls. `src/services/apiClient.ts` wraps Axios with a request timeout and normalized API errors so HTTP failures, timeouts, and missing responses are handled consistently. Local files in `src/data/*.json` remain as fallbacks so the demo is still reliable if one of the mock endpoints is unavailable. The services store resolved resources in in-memory `Map` caches, and they also dedupe in-flight requests so React development `StrictMode` does not create duplicate network calls while the first request is still pending. The layout toggle only derives a different section order from the cached base layout; contact details, notes, and conversation pages continue to reuse cached data.
 
-This is intentionally small and readable, but it mirrors a real API boundary. Later, the static imports inside `contactPageService.ts` can be replaced with `fetch` calls while `ContactPage.tsx` continues to call the same `contactPageService.getContactPageData()` method.
+This is intentionally small and readable, but it mirrors a real API boundary. Later, the mock URLs inside `contactPageService.ts` can be replaced with production endpoints while `ContactPage.tsx` continues to call the same `contactPageService.getContactPageData()` method.
 
 ## Assumptions
 
 - The screenshot is treated as the visual direction, not a pixel-perfect design system.
-- Static data uses a small set of contact records to demonstrate previous/next navigation.
+- Mock API data uses a small set of contact records to demonstrate previous/next navigation.
 - The right rail icons and action buttons are visual-only.
-- Conversations and notes are read-only static data.
+- Conversations and notes are read-only demo data served from mock APIs.
 - Search, DND, and Actions tabs are present for UI fidelity but do not filter content.
 - The layout switch is included to demonstrate runtime JSON layout changes without a backend.
 

@@ -10,6 +10,16 @@
   gap: 5px;
 }
 
+.feedState {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  place-items: center;
+  color: #647084;
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .typingRow {
   display: flex;
   flex-shrink: 0;
